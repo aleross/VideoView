@@ -120,6 +120,10 @@ public class VideoView extends TextureView {
         return result;
     }
 
+    public void setOnCompletionListener(MediaPlayer.OnCompletionListener listener) {
+        onCompletionListener = listener;
+    }
+
     public void setVideoPath(String path) {
         Log.d(LOG_TAG, "Setting video path to: " + path);
         setVideoURI(Uri.parse(path));
@@ -264,6 +268,9 @@ public class VideoView extends TextureView {
             targetState = STATE_PLAYBACK_COMPLETED;
             Log.d(LOG_TAG, "Video completed number " + number);
             surface.release();
+            if (onCompletionListener != null) {
+                onCompletionListener.onCompletion(mp);
+            }
         }
     };
 
