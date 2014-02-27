@@ -2,8 +2,6 @@
 // VideoView
 //
 //
-// Created by Alex Ross on 1/29/13
-// Copyright (c) 2012 Alex Ross. All rights reserved.
 //
 
 package com.areteross.VideoView;
