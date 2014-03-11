@@ -122,6 +122,10 @@ public class VideoView extends TextureView {
         onCompletionListener = listener;
     }
 
+    public void setOnPreparedListener(MediaPlayer.OnPreparedListener listener) {
+        onPreparedListener = listener;
+    }
+
     public void setVideoPath(String path) {
         Log.d(LOG_TAG, "Setting video path to: " + path);
         setVideoURI(Uri.parse(path));
@@ -290,6 +294,9 @@ public class VideoView extends TextureView {
                 if (targetState == STATE_PLAYING) {
                     mediaPlayer.start();
                 }
+            }
+            if (onPreparedListener != null) {
+                onPreparedListener.onPrepared(mp);
             }
         }
     };
